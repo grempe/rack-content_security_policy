@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Glenn Rempe']
   spec.email         = ['glenn@rempe.us']
 
-  spec.summary       = 'Rack middleware for setting Content Security Policy security headers'
+  spec.summary       = 'Rack middleware for setting Content Security Policy (CSP) security headers'
   spec.description   = 'Rack middleware for declaratively setting the HTTP ContentSecurityPolicy (W3C CSP Level 2/3) security header to help prevent against XSS and other browser based attacks.'
   spec.homepage      = 'https://github.com/grempe/rack-content_security_policy'
   spec.license       = 'MIT'
