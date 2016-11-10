@@ -50,6 +50,9 @@ accepts two primary configuration options:
 * `report_only` : boolean `true` or `false`. Returns a `Content-Security-Policy-Report-Only` header instead of `Content-Security-Policy` when `true`. Defaults to true.
 * `directives` : A collection of valid CSP directives provided as key/value pairs. The key must be a lowercase String and must be comprised of the characters [a-z] and the `-`. The value must also be a String but is not limited to remain flexible as the CSP standards evolve. You can use conditional statements within the configuration block to set values dynamically at startup time. Defaults to an empty config that you must configure. An empty config will raise an exception.
 
+Note that certain CSP directives, such as `upgrade-insecure-requests`, do not
+take any arguments. For those, just set the value to `true`.
+
 Learn more about the Content Security Policy at the following sites:
 
 * W3C CSP Level 1 (deprecated) : [https://www.w3.org/TR/CSP1/](https://www.w3.org/TR/CSP1/)
@@ -72,6 +75,7 @@ Rack::ContentSecurityPolicy.configure do |d|
   d.report_only = ENV.fetch('RACK_ENV') != 'production'
   d['default-src'] = "'none'"
   d['script-src']  = "'self'"
+  d['upgrade-insecure-requests'] = true
 end
 
 use Rack::ContentSecurityPolicy
