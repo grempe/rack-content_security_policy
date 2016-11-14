@@ -6,7 +6,7 @@ but it skips the process of signing the version release task.
 ## Run Tests
 
 ```sh
-$ bundle exec rake test wwtd
+$ bundle exec rake wwtd
 ```
 
 ## Git Push
