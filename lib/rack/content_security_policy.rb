@@ -45,7 +45,7 @@ module Rack
     def _call(env)
       status, headers, response = @app.call(env)
 
-      if headers['Content-Type'].include?('text/html')
+      if headers.is_a?(Hash) && headers['Content-Type'] && headers['Content-Type'].include?('text/html')
         directives = @directives.sort.map do |d|
           if NO_ARG_DIRECTIVES.include?(d[0])
             d[0]
