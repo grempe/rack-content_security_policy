@@ -35,21 +35,5 @@ describe Rack::ContentSecurityPolicy do
           .to eq("block-all-mixed-content; default-src *; disown-opener; img-src *.google.com; script-src 'self'; upgrade-insecure-requests")
       end
     end
-
-    context 'without text/html response header' do
-      let(:app) do
-        Rack::Builder.app do
-          use Rack::ContentSecurityPolicy
-          run lambda { |env| [200, { 'Content-Type' => 'text/json' }, %w(ok)] }
-        end
-      end
-
-      it 'responds with no Content-Security-Policy response header' do
-        get('/')
-        expect(last_response.headers['Content-Security-Policy'])
-          .to be nil
-      end
-    end
-
   end
 end

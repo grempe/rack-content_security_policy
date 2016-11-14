@@ -45,18 +45,16 @@ module Rack
     def _call(env)
       status, headers, response = @app.call(env)
 
-      if headers.is_a?(Hash) && headers['Content-Type'] && headers['Content-Type'].include?('text/html')
-        directives = @directives.sort.map do |d|
-          if NO_ARG_DIRECTIVES.include?(d[0])
-            d[0]
-          else
-            "#{d[0]} #{d[1]}"
-          end
-        end.join('; ')
+      directives = @directives.sort.map do |d|
+        if NO_ARG_DIRECTIVES.include?(d[0])
+          d[0]
+        else
+          "#{d[0]} #{d[1]}"
+        end
+      end.join('; ')
 
-        csp_hdr = @report_only ? CSP_REPORT_ONLY_HEADER : CSP_HEADER
-        headers[csp_hdr] = directives
-      end
+      csp_hdr = @report_only ? CSP_REPORT_ONLY_HEADER : CSP_HEADER
+      headers[csp_hdr] = directives
 
       [status, headers, response]
     end

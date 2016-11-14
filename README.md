@@ -11,8 +11,8 @@ been used in production. Your feedback is requested.
 ## About
 
 `Rack::ContentSecurityPolicy` is a Rack middleware that makes it easy for your
-Rack based application (Sinatra, Rails) to serve Content Security Policy headers
-for HTML pages.
+Rack based application (Sinatra, Rails) to serve an `Content-Security-Policy` or
+`Content-Security-Policy-Report-Only` header.
 
 This middleware was inspired by the [p0deje/content-security-policy](https://github.com/p0deje/content-security-policy)
 middleware and borrows quite a bit of code from that gem. This gem also makes
@@ -72,7 +72,7 @@ Learn more about the Content Security Policy at the following sites:
 require 'rack/content_security_policy'
 
 Rack::ContentSecurityPolicy.configure do |d|
-  d.report_only = ENV.fetch('RACK_ENV') != 'production'
+  d.report_only = false
   d['default-src'] = "'none'"
   d['script-src']  = "'self'"
   d['upgrade-insecure-requests'] = true
