@@ -3,11 +3,6 @@
 [![Build Status](https://travis-ci.org/grempe/rack-content_security_policy.svg?branch=master)](https://travis-ci.org/grempe/rack-content_security_policy)
 [![Code Climate](https://codeclimate.com/github/grempe/rack-content_security_policy/badges/gpa.svg)](https://codeclimate.com/github/grempe/rack-content_security_policy)
 
-## WARNING
-
-This is pre-release software. It is pretty well tested but has not yet
-been used in production. Your feedback is requested.
-
 ## About
 
 `Rack::ContentSecurityPolicy` is a Rack middleware that makes it easy for your
